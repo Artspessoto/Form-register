@@ -16,30 +16,30 @@ class ValidForm {
     const validFields = this.checkFields();
     const validPass = this.checkPassword();
 
-    if(validFields && validPass){
-      alert('Formulário enviado!');
+    if (validFields && validPass) {
+      alert("Formulário enviado!");
       this.formulario.submit();
     }
   }
 
-  checkPassword(){
+  checkPassword() {
     let valid = true;
 
-    const pass = this.formulario.querySelector('.senha');
-    const repeatPass = this.formulario.querySelector('.repetir-senha');
+    const pass = this.formulario.querySelector(".senha");
+    const repeatPass = this.formulario.querySelector(".repetir-senha");
 
     //senha e repetir senha sendo iguais
-    if(pass.value !== repeatPass.value){
+    if (pass.value !== repeatPass.value) {
       valid = false;
-      this.createError(pass, 'As senhas não coincidem!');
-      this.createError(repeatPass, 'As senhas não coincidem!');
-      console.log(pass.value, repeatPass.value)
+      this.createError(pass, "As senhas não coincidem!");
+      this.createError(repeatPass, "As senhas não coincidem!");
+      console.log(pass.value, repeatPass.value);
     }
 
     ///quantidade de caracteres esperados da senha
-    if(pass.value.length < 6 || pass.value.length > 12){
+    if (pass.value.length < 6 || pass.value.length > 12) {
       valid = false;
-      this.createError(pass, 'Senha precisa ter entre 6 e 12 caracteres!')
+      this.createError(pass, "Senha precisa ter entre 6 e 12 caracteres!");
     }
     return valid;
   }
@@ -76,21 +76,27 @@ class ValidForm {
   }
 
   //tratamento de entrada para nome de usuário
-  validUser(field){
-     const user = field.value;
-     let valid = true;
+  validUser(field) {
+    const user = field.value;
+    let valid = true;
 
-     if(user.length < 3 || user.length > 12) {
-      this.createError(field, 'Nome de usuário precisa ter entre 3 e 12 caracteres');
+    if (user.length < 3 || user.length > 12) {
+      this.createError(
+        field,
+        "Nome de usuário precisa ter entre 3 e 12 caracteres"
+      );
       valid = false;
-     }
-    
-     //se o nome do usuário não conter letras e números, ele recebe um aviso 
-     if(!user.match(/^[a-zA-Z0-9]+$/g)) {
-      this.createError(field, 'Nome de usuário precisa conter apenas letras e/ou números!');
+    }
+
+    //se o nome do usuário não conter letras e números, ele recebe um aviso
+    if (!user.match(/^[a-zA-Z0-9]+$/g)) {
+      this.createError(
+        field,
+        "Nome de usuário precisa conter apenas letras e/ou números!"
+      );
       console.log(user);
       valid = false;
-     }
+    }
 
     return valid;
   }
@@ -102,8 +108,8 @@ class ValidForm {
     if (!cpf.valida()) {
       this.createError(field, "CPF inválido!");
       return false;
-    } 
-    
+    }
+
     return true;
   }
 

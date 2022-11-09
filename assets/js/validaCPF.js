@@ -22,7 +22,6 @@ class ValidaCPF {
     const digito2 = ValidaCPF.criaDigito(cpfParcial + digito1);
 
     this.completoCPF = cpfParcial + digito1 + digito2;
-    
   }
 
   valida() {
@@ -30,7 +29,7 @@ class ValidaCPF {
     if (this.cpfLimpo.length != 11) return false;
     if (this.sequencia()) return false;
     this.novoCPF();
-    
+
     return this.completoCPF === this.cpfLimpo;
   }
 
@@ -49,4 +48,3 @@ class ValidaCPF {
     return digito > 9 ? "0" : String(digito);
   }
 }
-
